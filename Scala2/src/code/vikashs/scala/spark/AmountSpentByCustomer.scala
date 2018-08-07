@@ -17,6 +17,7 @@ object AmountSpentByCustomer {
     val sc = new SparkContext("local[*]", "AmountSpentByCustomer")
     val lines = sc.textFile("G://Workspace//ScalaWorkSpace47//orderDetails.csv")
    
+    //(44,37.19) & (44,12.00)
     val rddCust = lines.map(parseLine)
      val totalByCustomer = rddCust.reduceByKey( (x,y) => x + y )
      
