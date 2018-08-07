@@ -23,7 +23,8 @@ object TminByLocation
     }
 
   }
-  
+  //EZE00100082,18000101,TMAX,-86,,,E,
+  //EZE00100082,18000101,TMIN,-135,,,E,
   def parsedLine(lines:String)={
     val fields =lines.split(",")
     val stationid=fields(0)
