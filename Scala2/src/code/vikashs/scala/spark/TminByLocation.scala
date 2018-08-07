@@ -9,7 +9,7 @@ object TminByLocation
   def main(args: Array[String]): Unit = 
   {
      val sc = new SparkContext("local[*]","TminByLocation")
-     val lines=sc.textFile("../tempra.csv")
+     val lines=sc.textFile("G://Workspace//ScalaWorkSpace47//tempra.csv")
      val parsedLines =lines.map(parsedLine)
      val tminFiltered=parsedLines.filter(x=> x._2=="TMIN")
      val stationTemp= tminFiltered.map(x=> (x._1,x._3.toFloat))
