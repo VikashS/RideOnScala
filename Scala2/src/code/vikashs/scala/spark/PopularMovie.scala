@@ -11,7 +11,7 @@ object PopularMovie {
     val sc = new SparkContext("local[*]", "PopularMovie")
     val lines = sc.textFile("G://Workspace//ScalaWorkSpace47//movie.data")
     val rddMovies = lines.map(x=>  (x.split("\t")(1).toInt,1))
-    //(242,881250949)
+    //(242,1)
     val filteredMovie=rddMovies.reduceByKey((x,y)=> x+y)
     val flipped = filteredMovie.map( x => (x._2, x._1) )
     val sortedMovies = flipped.sortByKey()
