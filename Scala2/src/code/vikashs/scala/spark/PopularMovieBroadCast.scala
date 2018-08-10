@@ -4,6 +4,7 @@ import org.apache.spark.SparkContext._
 import scala.io.Source
 import java.nio.charset.CodingErrorAction
 import scala.io.Codec
+import org.apache.log4j._
 
 object PopularMovieBroadCast 
 {
@@ -28,6 +29,8 @@ object PopularMovieBroadCast
   }
 
   def main(args: Array[String]) {
+    
+    Logger.getLogger("org").setLevel(Level.ERROR)
     
     // Create a SparkContext using every core of the local machine
     val sc = new SparkContext("local[*]", "PopularMoviesNicer")
