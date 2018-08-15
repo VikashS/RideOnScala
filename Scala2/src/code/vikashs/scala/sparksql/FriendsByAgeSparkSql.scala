@@ -9,7 +9,8 @@ object FriendsByAgeSparkSql {
   
   def mapper(line:String): Person = {
     val fields = line.split(',')  
-    
+    //Here is the magic for case class
+    //we dont need to create the Person class due to case class
     val person:Person = Person(fields(0).toInt, fields(1), fields(2).toInt, fields(3).toInt)
     return person
   }
@@ -28,6 +29,7 @@ object FriendsByAgeSparkSql {
     val people = lines.map(mapper)
     
     import spark.implicits._
+    // Got the structured dataset which could be converted into table
     val schemaPeople = people.toDS
     
     schemaPeople.printSchema()
